@@ -158,21 +158,8 @@ def read_config_write_file(json_config_file_name,system):
 
 #Read the json and save the file
 json_config_file_names=[
-    'read_ZAPO_SEGMT.json',
-      'read_MARA.json',
-      'read_zscm_plant_proty.json',
-     'read_t179.json',
-     'read_mseg.json',
     'read_vbrk.json',
-    'read_vbrp.json',
-     'read_mvke.json',
-     'read_mbew.json',
-     'read_likp.json',
-     'read_MARA_VEN.json',
-    'read_eina.json',
-    'read_eine.json',
-     'read_lips.json'
-    #'read_TVM1.json'
+    'read_vbrp.json'
 ]
 
 
