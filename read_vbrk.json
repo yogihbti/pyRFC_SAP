@@ -1,0 +1,71 @@
+{
+    "RFC_NAME": "BBP_RFC_READ_TABLE",
+    "WRITE_FILE" : "6_VBRK.csv",
+    "QUERY_TABLE": "VBRK",
+    "DELIMITER": ",",
+    "NO_DATA": "",
+    "MULTIPART":"FALSE",
+    "FIELDS": [
+        {
+            "FIELDNAME":"VBELN"
+        },
+        {
+            "FIELDNAME":"FKART"
+        },
+        {
+            "FIELDNAME":"FKTYP"
+        },
+        {
+            "FIELDNAME":"VBTYP"
+        },
+        {
+            "FIELDNAME":"VKORG"
+        },
+        {
+            "FIELDNAME":"VTWEG"
+        },
+        {
+            "FIELDNAME":"FKDAT"
+        },
+        {
+            "FIELDNAME":"FKSTO"
+        },
+        {
+            "FIELDNAME":"KUNAG"
+        },
+        {
+            "FIELDNAME":"ERDAT"
+        }
+        
+    ],
+
+    "OPTIONS_PLAN" :[
+        {   
+            "TYPE": "TEXT",
+            "TEXT": "FKART IN ('ZPRS','ZORS','ZPRD','ZORD','ZEXS','ZFCS','ZFCW','ZMTO') ",
+            "CONCATINATE_SUFFIX_VERB":"AND"
+        },
+        {   
+            "TYPE": "TEXT",
+            "TEXT": "VKORG IN ('1511','1512','1513','1514') ",
+            "CONCATINATE_SUFFIX_VERB":"AND"
+        },
+        {
+            "TYPE": "TEXT",
+            "TEXT": "FKSTO EQ SPACE ",
+            "CONCATINATE_SUFFIX_VERB":"AND"
+        },
+        {
+            "TYPE": "TEXT",
+            "TEXT": "VTWEG NE '06'",
+            "CONCATINATE_SUFFIX_VERB":"AND ("            
+        },
+        {
+            "TYPE":"TEXT",
+            "TEXT":"ERDAT BETWEEN '{{FROM_MONTH}}' AND '{{TO_MONTH}}'",
+            "CONCATINATE_SUFFIX_VERB":")"
+        }
+       
+    ]
+
+}

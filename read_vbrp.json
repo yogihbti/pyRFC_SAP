@@ -1,0 +1,58 @@
+{
+    "RFC_NAME": "BBP_RFC_READ_TABLE",
+    "WRITE_FILE" : "7_VBRP.csv",
+    "QUERY_TABLE": "VBRP",
+    "DELIMITER": ",",
+    "NO_DATA": "",
+    "MULTIPART":"TRUE",
+    "FIELDS": [
+        {
+            "FIELDNAME":"VBELN"
+        },
+        {
+            "FIELDNAME":"POSNR"
+        },
+        {
+            "FIELDNAME":"FKIMG"
+        },
+        {
+            "FIELDNAME":"PSTYV"
+        },
+        {
+            "FIELDNAME":"WERKS"
+        },
+        {
+            "FIELDNAME":"VKBUR"
+        },
+        {
+            "FIELDNAME":"VKGRP"
+        },
+        {
+            "FIELDNAME":"MVGR1"
+        },
+        {
+            "FIELDNAME":"MATNR"
+        },
+        {
+            "FIELDNAME":"NETWR"
+        }
+    ],
+
+    "OPTIONS_PLAN" :[
+       
+    ],
+
+    "OPTIONS_PLAN_MALTIPART" :
+        {   
+            "TYPE": "FILE",
+            "TABLE_FIELD":"VBELN",
+            "FILE_NAME":"6_VBRK.csv",
+            "FILE_DELIM":",",
+            "COLUMN_NAME": "Billing Document",
+            "CONCATINATE_VERB":"OR",
+            "CONCATINATE_SUFFIX_VERB":"",
+            "SUBSET_START":0,
+            "CHUNK_SIZE":15000
+        }
+
+}
