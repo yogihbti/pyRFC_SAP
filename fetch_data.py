@@ -16,35 +16,6 @@ import re
 pp = PrettyPrinter(indent=4)
 
 
-# In[2]:
-
-
-#Download the Forecast from SCP save it to file name 1_forecast.csv
-try:
-    # Connecting the system
-    conn=Connection(**SCP)
-    #Calling the RFC
-    result = conn.call(func_name ='BAPI_PBSRVAPS_GETDETAIL2',                 PLANNINGBOOK='L_ST_MTS',                 DATA_VIEW='7_BATCH_JOB',                 PLANNING_VERSION='000',                 SELECTION_ID='BG_JB_FR_HM_TEST',                PERIOD_TYPE = 'A',                 DATE_FROM=ctx_dict['FROM_MONTH'],                DATE_TO=ctx_dict['TO_MONTH'],                GROUP_BY = [{'CHARACTERISTIC_NAME':'L_PROD'}],                KEY_FIGURE_SELECTION=[{'KEY_FIGURE':'L_FIN_PLN'}] )
-
-    ### PROCESSING Results 
-    df_key_fig_val=pd.DataFrame(result['KEY_FIGURE_VALUE'])
-    df_key_fig=pd.DataFrame(result['KEY_FIGURE'])
-    df_cvc=pd.DataFrame(result['CHARACTERISTICS_COMBINATION'])
-    df=df_key_fig_val.join(df_key_fig.set_index('KEY_FIGURE_ID'), on='KEY_FIGURE_ID').         join(df_cvc.set_index('CHAR_COMB_ID'),on='CHAR_COMB_ID')
-    
-    df['PERIOD_BEGIN'] = pd.to_datetime(df['PERIOD_BEGIN'], format="%Y%m%d%H%M%S")
-    df['PERIOD_END'] = pd.to_datetime(df['PERIOD_END'], format="%Y%m%d%H%M%S")
-    
-    #Saving the results to file
-    df.to_csv("1_forecast.csv")
-        
-except Exception as e:
-    print(e)
-
-
-# In[3]:
-
-
 #JSON preprocessor which replaces variables from dictionary to json file
 def preprocess_json(json_string,key_word_dict):
     string=json_string
